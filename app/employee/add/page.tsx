@@ -24,10 +24,6 @@ export default function EmployeeAddPage() {
   const methods = useForm<EmployeePayload>({
     resolver: yupResolver(employeeSchema),
     defaultValues: {
-      // first_name: "testss",
-      // last_name: "ddddddd",
-      // email: "ddddd@ga.am",
-      // phone: "+94770000000",
       gender: MALE,
     },
   });

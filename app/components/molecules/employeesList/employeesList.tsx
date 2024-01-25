@@ -15,6 +15,7 @@ import EmployeePagination from "../pagination/pagination";
 import IconButton from "../../atoms/iconButton.tsx/iconButton";
 import DeleteSvg from "@/public/images/Delete.svg";
 import theme from "@/app/styles/theme";
+import { EmployeesListStyles } from "./employeesList.styles";
 
 export type EmployeesListProps = {
   searchValue: string;
@@ -125,13 +126,7 @@ export default function EmployeesList({ searchValue }: EmployeesListProps) {
   return (
     <>
       {employee.idLoaded ? (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            marginBottom: "30px",
-          }}
-        >
+        <div style={EmployeesListStyles.Wrapper}>
           <StyledDataGrid
             paginationModel={paginationModel}
             onPaginationModelChange={setPaginationModel}

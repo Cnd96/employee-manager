@@ -24,6 +24,7 @@ const InputWithLabel = ({ title, name, error }: InputWithLabelProps) => {
           {...register(name)}
           id={name}
           name={name}
+          placeholder={title}
         />
       </div>
       {error && <p style={InputWithLabelStyles.Error}>{error}</p>}

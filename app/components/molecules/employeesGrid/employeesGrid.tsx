@@ -5,6 +5,7 @@ import { PAGE_SIZE } from "@/app/helpers/constants";
 import { getEmployeeListAsync } from "@/app/store/employee.slice";
 import Loading from "../../atoms/spinner";
 import Pagination from "../pagination";
+import { EmployeesGridStyles } from "./employeesGrid.styles";
 
 export type EmployeesGridProps = {
   searchValue: string;
@@ -16,13 +17,8 @@ export default function EmployeesGrid({ searchValue }: EmployeesGridProps) {
   return (
     <>
       {employee.idLoaded ? (
-        <>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-            }}
-          >
+        <div style={EmployeesGridStyles.Wrapper}>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
             {employee.employeeList.map((employee) => (
               <EmployeeCard
                 key={employee.id}
@@ -51,7 +47,7 @@ export default function EmployeesGrid({ searchValue }: EmployeesGridProps) {
               count={employee.totalEmployees}
             />
           </div>
-        </>
+        </div>
       ) : (
         <Loading />
       )}
