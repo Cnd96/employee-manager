@@ -25,6 +25,7 @@ const InputWithLabel = ({ title, name, error }: InputWithLabelProps) => {
         <TextField
           sx={{
             "& .MuiInputBase-input": {
+              // width:'300px',
               height: "20px",
               borderRadius: "unset",
               background: "#F0F0F0",

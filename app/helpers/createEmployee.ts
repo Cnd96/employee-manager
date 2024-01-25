@@ -1,10 +1,10 @@
-import useApi from "./apit";
+import UseApi from "./apit";
 import { EmployeePayload } from "../types/employee";
 import { MALE } from "./constants";
 
 const createEmployee = async (employee: EmployeePayload):Promise<any> => {
   try {
-    const api = useApi();
+    const api = UseApi();
     const randNum = Math.floor(Math.random() * 81) + 10;
     const employeeToCreate = {
       first_name: employee.first_name,

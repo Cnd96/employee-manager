@@ -51,7 +51,7 @@ const EmployeeCard = ({
       <div
         style={{
           boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-          width: "140px",
+          width: largeScreen ? "140px" : "150px",
           borderRadius: "5px",
           margin: "0 10px",
         }}
@@ -103,10 +103,7 @@ const EmployeeCard = ({
                 onClick={() => dispatch(deleteEmployeeAsync(id))}
               />
               <Link href={`/employee/edit/${id}`}>
-                <IconButton
-                  src={Man}
-                  background={theme.green}
-                />
+                <IconButton src={Man} background={theme.green} />
               </Link>
             </div>
           </div>

@@ -20,8 +20,8 @@ export type EmployeePayload = {
 
 export type EmployeeListDataResponse = {
   isSuccess: boolean;
-  currentPage: number;
-  count: number;
+  currentPage: string;
+  count: string;
   pagesCount: number;
   employees: Employee[];
 };

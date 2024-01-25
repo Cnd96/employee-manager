@@ -10,7 +10,7 @@ export interface EmployeeCardProps {
 
 export default function EmployeeFormData({ errors, text }: EmployeeCardProps) {
   return (
-    <>
+    <div style={{margin:'0 5%'}}>
       <InputWithLabel
         title="First Name"
         name="first_name"
@@ -35,7 +35,6 @@ export default function EmployeeFormData({ errors, text }: EmployeeCardProps) {
       <Button
         type="submit"
         variant="outlined"
-        data-testid="submit"
         color="primary"
         sx={{
           width: "120px",
@@ -48,6 +47,6 @@ export default function EmployeeFormData({ errors, text }: EmployeeCardProps) {
       >
         {text}
       </Button>
-    </>
+    </div>
   );
 }
