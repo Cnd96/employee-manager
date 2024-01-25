@@ -50,6 +50,7 @@ export default function EmployeeListPage() {
     500,
     [searchValue]
   );
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
