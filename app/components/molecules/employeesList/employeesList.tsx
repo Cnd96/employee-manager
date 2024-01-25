@@ -22,17 +22,12 @@ export type EmployeesListProps = {
 };
 
 const StyledDataGrid = styled(DataGrid)(() => ({
-  "& .MuiDataGrid-cell": {
-    borderRight: `1px solid #138808`,
-    borderBottom: `1px solid #138808`,
-  },
+  "& .MuiDataGrid-cell": { ...EmployeesListStyles.TabelCell },
   "& .MuiDataGrid-cell:first-child": {
-    borderLeft: `1px solid #138808`,
+    ...EmployeesListStyles.FirstChild,
   },
   "& .MuiDataGrid-columnHeader": {
-    borderRight: `1px solid #138808`,
-    backgroundColor: `#4CBB17`,
-    color: `#ffffff`,
+    ...EmployeesListStyles.ColumnHeader,
   },
 }));
 
@@ -56,30 +51,35 @@ export default function EmployeesList({ searchValue }: EmployeesListProps) {
         ),
       width: 80,
       align: "left",
+      sortable: false,
     },
     {
       field: "first_name",
       headerName: "First name",
       flex: 1,
       align: "left",
+      sortable: false,
     },
     {
       field: "last_name",
       headerName: "Last name",
       flex: 1,
       align: "left",
+      sortable: false,
     },
     {
       field: "email",
       headerName: "Email",
       flex: 1,
       align: "left",
+      sortable: false,
     },
     {
       field: "phone",
       headerName: "Phone Number",
       flex: 1,
       align: "left",
+      sortable: false,
     },
     {
       field: "gender",
@@ -88,25 +88,22 @@ export default function EmployeesList({ searchValue }: EmployeesListProps) {
       renderCell: (params) =>
         params.value == "M" ? <>{MALE}</> : <>{FEMALE}</>,
       align: "left",
+      sortable: false,
     },
     {
       field: "action",
       headerName: "Action",
       width: 120,
       sortable: false,
-
       renderCell: (params) => {
         return (
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link href={`/employee/edit/${params.id}`}>
               <Button
                 variant="contained"
-                // TODO styles
                 style={{
-                  background: "#808080",
+                  ...EmployeesListStyles.EditButton,
                   textTransform: "none",
-                  height: "30px",
-                  marginRight: "5px",
                 }}
                 size="small"
               >
@@ -149,6 +146,10 @@ export default function EmployeesList({ searchValue }: EmployeesListProps) {
               ),
             }}
             pageSizeOptions={[]}
+            disableColumnFilter={true}
+            disableColumnMenu={true}
+            disableColumnSelector={true}
+            sortModel={[]}
             rows={employee.employeeList}
             columns={columns}
             getRowId={(row) => row.id}

@@ -84,7 +84,7 @@ const EmployeeCard = ({
                 onClick={() => dispatch(deleteEmployeeAsync(id))}
               />
               <Link href={`/employee/edit/${id}`}>
-                <IconButton src={Man} background={theme.green} />
+                <IconButton src={Man} background={theme.greenLight} />
               </Link>
             </div>
           </div>

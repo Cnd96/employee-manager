@@ -16,7 +16,6 @@ export default function EmployeeFormData({ errors, text }: EmployeeCardProps) {
         title="First Name"
         name="first_name"
         error={errors.first_name?.message}
-        
       />
       <InputWithLabel
         title="Last Name"
