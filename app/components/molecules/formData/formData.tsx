@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import InputWithLabel from "@/app/components/molecules/inputWithLabel";
 import DropDownWithLabel from "@/app/components/molecules/dropDownWithLabel";
 import { GENDERS } from "@/app/helpers/constants";
+import { FormDataStyles } from "./formData.styles";
 
 export interface EmployeeCardProps {
   errors: any;
@@ -10,7 +11,7 @@ export interface EmployeeCardProps {
 
 export default function EmployeeFormData({ errors, text }: EmployeeCardProps) {
   return (
-    <div style={{margin:'0 5%'}}>
+    <div style={FormDataStyles.Container}>
       <InputWithLabel
         title="First Name"
         name="first_name"
@@ -36,14 +37,7 @@ export default function EmployeeFormData({ errors, text }: EmployeeCardProps) {
         type="submit"
         variant="outlined"
         color="primary"
-        sx={{
-          width: "120px",
-          margin: "10px 0",
-          height: "30px",
-          color: "rgb(97, 18, 171)",
-          borderColor: "rgb(97, 18, 171)",
-          float: "right",
-        }}
+        sx={FormDataStyles.Button}
       >
         {text}
       </Button>

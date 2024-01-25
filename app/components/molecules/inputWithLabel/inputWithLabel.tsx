@@ -1,7 +1,7 @@
-import theme from "@/app/styles/theme";
-import { TextField } from "@mui/material";
 import React from "react";
+import { TextField } from "@mui/material";
 import { useFormContext } from "react-hook-form";
+import { InputWithLabelStyles } from "./inputWithLabel.styles";
 
 export interface InputWithLabelProps {
   title: string;
@@ -12,27 +12,13 @@ export interface InputWithLabelProps {
 const InputWithLabel = ({ title, name, error }: InputWithLabelProps) => {
   const { register } = useFormContext();
   return (
-    <div style={{ marginBottom: "10px" }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
-      >
+    <div style={InputWithLabelStyles.Wrapper}>
+      <div style={InputWithLabelStyles.Container}>
         <p>{title}</p>
         <TextField
           sx={{
             "& .MuiInputBase-input": {
-              // width:'300px',
-              height: "20px",
-              borderRadius: "unset",
-              background: "#F0F0F0",
-              padding: "2px 4px",
-              borderBottom: "2px solid #808080",
-            //   TODO color code
-              fontSize: 16,
+              ...InputWithLabelStyles.Input,
             },
           }}
           {...register(name)}
@@ -40,7 +26,7 @@ const InputWithLabel = ({ title, name, error }: InputWithLabelProps) => {
           name={name}
         />
       </div>
-      {error && <p style={{ color: theme.error, fontSize: "9px" }}>{error}</p>}
+      {error && <p style={InputWithLabelStyles.Error}>{error}</p>}
     </div>
   );
 };

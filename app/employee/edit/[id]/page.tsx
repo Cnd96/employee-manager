@@ -15,6 +15,7 @@ import updateEmployee from "@/app/helpers/updateEmployee";
 import EmployeeFormData from "@/app/components/molecules/formData/formData";
 import TextButton from "@/app/components/atoms/textButton";
 import theme from "@/app/styles/theme";
+import { EditPageStyles } from "./styles";
 
 interface Props {
   params: { id: number };
@@ -55,15 +56,7 @@ const EmployeeEditPage = ({ params: { id } }: Props) => {
     }
   };
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: "20px",
-      }}
-    >
+    <div style={{ ...EditPageStyles.Container, flexDirection: "column" }}>
       <div
         style={{
           alignSelf: "flex-end",
@@ -78,7 +71,6 @@ const EmployeeEditPage = ({ params: { id } }: Props) => {
       </div>
       <Card
         style={{
-          minHeight: "250px",
           width: smallScreen
             ? "90%"
             : mediumScreen
@@ -86,8 +78,7 @@ const EmployeeEditPage = ({ params: { id } }: Props) => {
             : largeScreen
             ? "60%"
             : "40%",
-          margin: "20px 0",
-          borderRadius: "20px",
+          ...EditPageStyles.Card
         }}
       >
         <CardContent>

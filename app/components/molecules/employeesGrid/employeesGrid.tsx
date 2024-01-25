@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import EmployeeCard from "@/app/components/molecules/employeeCard";
 import { AppDispatch, RootState } from "@/app/store";
-import Loading from "../../atoms/spinner";
-import Demo from "../pagination";
 import { PAGE_SIZE } from "@/app/helpers/constants";
 import { getEmployeeListAsync } from "@/app/store/employee.slice";
+import Loading from "../../atoms/spinner";
+import Demo from "../pagination";
+
 export default function EmployeesGrid() {
   const dispatch = useDispatch<AppDispatch>();
   const employee = useSelector((state: RootState) => state.employee);
@@ -34,7 +35,9 @@ export default function EmployeesGrid() {
             <Demo
               page={employee.currentPage}
               pageSize={PAGE_SIZE}
-              onChangePage={(n) => dispatch(getEmployeeListAsync({ page: n, pageSize: PAGE_SIZE }))}
+              onChangePage={(n) =>
+                dispatch(getEmployeeListAsync({ page: n, pageSize: PAGE_SIZE }))
+              }
               count={employee.totalEmployees}
             />
           </div>

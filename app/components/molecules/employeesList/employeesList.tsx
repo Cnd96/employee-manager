@@ -1,5 +1,7 @@
 import { useState } from "react";
+import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { styled } from "@mui/material/styles";
 import { AppDispatch, RootState } from "@/app/store";
@@ -10,8 +12,6 @@ import {
 } from "@/app/store/employee.slice";
 import Loading from "../../atoms/spinner";
 import EmployeePagination from "../pagination/pagination";
-import { Button } from "@mui/material";
-import Link from "next/link";
 import IconButton from "../../atoms/iconButton.tsx/iconButton";
 import DeleteSvg from "@/public/images/Delete.svg";
 import theme from "@/app/styles/theme";

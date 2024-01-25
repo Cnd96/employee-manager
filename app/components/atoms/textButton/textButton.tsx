@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
-
+import { TextButtonStyles } from "./textButton.styles";
 export type ButtonProps = {
   text: string;
   background: string;
@@ -14,9 +14,7 @@ const TextButton = ({ text, background, onClick }: ButtonProps) => {
       color="secondary"
       style={{
         background,
-        height: "25px",
-        fontSize: "14px",
-        borderRadius: "15px",
+        ...TextButtonStyles,
       }}
       onClick={onClick}
     >

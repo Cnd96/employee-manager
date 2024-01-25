@@ -1,16 +1,12 @@
 import React from "react";
 import { CircularProgress } from "@mui/material";
+import { SpinnerStyles } from "./spinner.styles";
 
 
 const Spinner = () => {
   return (
     <div
-      style={{
-        overflow: "hidden",
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "50px",
-      }}
+      style={SpinnerStyles}
     >
       <CircularProgress />
     </div>

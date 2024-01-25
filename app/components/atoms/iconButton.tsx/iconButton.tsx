@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
 import { IconButtonStyles } from "./iconButton.styles";
+
 export type IconButtonProps = {
   src: string;
   background: string;

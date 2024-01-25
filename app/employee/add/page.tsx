@@ -13,6 +13,7 @@ import { employeeSchema } from "@/app/helpers/yupSchema";
 import EmployeeFormData from "@/app/components/molecules/formData/formData";
 import TextButton from "@/app/components/atoms/textButton";
 import theme from "@/app/styles/theme";
+import { AddPageStyles } from "./styles";
 
 export default function EmployeeAddPage() {
   const router = useRouter();
@@ -23,9 +24,9 @@ export default function EmployeeAddPage() {
   const methods = useForm<EmployeePayload>({
     resolver: yupResolver(employeeSchema),
     defaultValues: {
-      // first_name: "chamal",
-      // last_name: "demele",
-      // email: "cham@ga.am",
+      // first_name: "testss",
+      // last_name: "ddddddd",
+      // email: "ddddd@ga.am",
       // phone: "+94770000000",
       gender: MALE,
     },
@@ -43,15 +44,7 @@ export default function EmployeeAddPage() {
   };
   return (
     <>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          marginTop: "20px",
-        }}
-      >
+      <div style={{ ...AddPageStyles.Container, flexDirection: "column" }}>
         <div
           style={{
             alignSelf: "flex-end",
@@ -66,7 +59,7 @@ export default function EmployeeAddPage() {
         </div>
         <Card
           style={{
-            minHeight: "250px",
+            ...AddPageStyles.Card,
             width: smallScreen
               ? "90%"
               : mediumScreen
@@ -74,8 +67,6 @@ export default function EmployeeAddPage() {
               : largeScreen
               ? "60%"
               : "40%",
-            margin: "20px 0",
-            borderRadius: "20px",
           }}
         >
           <CardContent>
