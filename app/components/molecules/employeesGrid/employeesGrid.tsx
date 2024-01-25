@@ -4,9 +4,13 @@ import { AppDispatch, RootState } from "@/app/store";
 import { PAGE_SIZE } from "@/app/helpers/constants";
 import { getEmployeeListAsync } from "@/app/store/employee.slice";
 import Loading from "../../atoms/spinner";
-import Demo from "../pagination";
+import Pagination from "../pagination";
 
-export default function EmployeesGrid() {
+export type EmployeesGridProps = {
+  searchValue: string;
+};
+
+export default function EmployeesGrid({ searchValue }: EmployeesGridProps) {
   const dispatch = useDispatch<AppDispatch>();
   const employee = useSelector((state: RootState) => state.employee);
   return (
@@ -32,11 +36,17 @@ export default function EmployeesGrid() {
             ))}
           </div>
           <div>
-            <Demo
+            <Pagination
               page={employee.currentPage}
               pageSize={PAGE_SIZE}
               onChangePage={(n) =>
-                dispatch(getEmployeeListAsync({ page: n, pageSize: PAGE_SIZE }))
+                dispatch(
+                  getEmployeeListAsync({
+                    page: n,
+                    pageSize: PAGE_SIZE,
+                    searchTerm: searchValue,
+                  })
+                )
               }
               count={employee.totalEmployees}
             />

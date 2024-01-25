@@ -16,6 +16,10 @@ import IconButton from "../../atoms/iconButton.tsx/iconButton";
 import DeleteSvg from "@/public/images/Delete.svg";
 import theme from "@/app/styles/theme";
 
+export type EmployeesListProps = {
+  searchValue: string;
+};
+
 const StyledDataGrid = styled(DataGrid)(() => ({
   "& .MuiDataGrid-cell": {
     borderRight: `1px solid #138808`,
@@ -31,7 +35,7 @@ const StyledDataGrid = styled(DataGrid)(() => ({
   },
 }));
 
-export default function EmployeesList() {
+export default function EmployeesList({ searchValue }: EmployeesListProps) {
   const dispatch = useDispatch<AppDispatch>();
   const [paginationModel, setPaginationModel] = useState({
     pageSize: PAGE_SIZE,
@@ -138,7 +142,11 @@ export default function EmployeesList() {
                   pageSize={PAGE_SIZE}
                   onChangePage={(n) =>
                     dispatch(
-                      getEmployeeListAsync({ page: n, pageSize: PAGE_SIZE })
+                      getEmployeeListAsync({
+                        page: n,
+                        pageSize: PAGE_SIZE,
+                        searchTerm: searchValue,
+                      })
                     )
                   }
                   count={employee.totalEmployees}

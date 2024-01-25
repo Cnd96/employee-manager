@@ -67,16 +67,21 @@ const employeeListSlice = createSlice({
 
 export const getEmployeeListAsync = createAsyncThunk(
   "employee/getEmployeeListAsync",
-  async (pageData: { page: number; pageSize?: number }) => {
+  async (pageData: {
+    page: number;
+    pageSize?: number;
+    searchTerm?: string;
+  }) => {
+    let searchData = pageData.searchTerm || "";
     if (pageData.pageSize) {
       const response = await UseApi().fetch<EmployeeListDataResponse>(
-        `employee/list?pageSize=${pageData.pageSize}&page=${pageData.page}`,
+        `employee/list?pageSize=${pageData.pageSize}&page=${pageData.page}&searchTerm=${searchData}`,
         "GET"
       );
       return response;
     } else {
       const response = await UseApi().fetch<EmployeeListDataResponse>(
-        `employee/list?page=${pageData.page}`,
+        `employee/list?page=${pageData.page}&searchTerm=${searchData}`,
         "GET"
       );
       return response;

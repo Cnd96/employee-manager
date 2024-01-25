@@ -14,8 +14,12 @@ import EmployeesList from "../../components/molecules/employeesList/employeesLis
 import EmployeesGrid from "../../components/molecules/employeesGrid/employeesGrid";
 import GridView from "@/public/images/GridView.svg";
 import ListView from "@/public/images/ListView.svg";
+import SearchBar from "@/app/components/molecules/SearchBar/SearchBar";
+import { useDebounce } from "react-use";
 
 export default function EmployeeListPage() {
+  const [searchValue, setSearchValue] = useState("");
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState("");
   const router = useRouter();
   const [selectedView, setSelectedView] = useState(GRID_VIEW);
   const dispatch = useDispatch<AppDispatch>();
@@ -32,6 +36,24 @@ export default function EmployeeListPage() {
     }
   };
 
+  useDebounce(
+    () => {
+      setDebouncedSearchValue(searchValue);
+      dispatch(
+        getEmployeeListAsync({
+          page: 1,
+          pageSize: PAGE_SIZE,
+          searchTerm: searchValue,
+        })
+      );
+    },
+    500,
+    [searchValue]
+  );
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <>
       <Container maxWidth="lg">
@@ -42,6 +64,7 @@ export default function EmployeeListPage() {
           margin={"20px 0"}
           alignItems={"center"}
         >
+          <SearchBar value={searchValue} onChange={handleSearchChange} />
           <TextButton
             text="Add Employee"
             background={theme.primaryMain}
@@ -53,7 +76,11 @@ export default function EmployeeListPage() {
             onClick={() => onViewChange()}
           />
         </Stack>
-        {selectedView === GRID_VIEW ? <EmployeesGrid /> : <EmployeesList />}
+        {selectedView === GRID_VIEW ? (
+          <EmployeesGrid searchValue={searchValue} />
+        ) : (
+          <EmployeesList searchValue={searchValue} />
+        )}
       </Container>
     </>
   );
