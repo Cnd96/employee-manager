@@ -14,6 +14,7 @@ const IconButton = forwardRef(
   ) => {
     return (
       <button
+        data-testid="IconButtonId"
         ref={bref}
         {...props}
         style={{

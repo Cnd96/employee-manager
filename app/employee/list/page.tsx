@@ -21,7 +21,7 @@ export default function EmployeeListPage() {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState("");
-  const [selectedView, setSelectedView] = useState(LIST_VIEW);
+  const [selectedView, setSelectedView] = useState(GRID_VIEW);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
