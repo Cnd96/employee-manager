@@ -1,35 +1,27 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import theme from "@/app/styles/theme";
+import { SearchBarStyles } from "./SearchBar.styles";
 
 export type SearchBarProps = {
+  placeHolder: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const SearchBar = ({ value, onChange }: SearchBarProps) => {
+const SearchBar = ({ placeHolder, value, onChange }: SearchBarProps) => {
   return (
-    <div
-      style={{ display: "flex", alignItems: "center", justifyContent: "end" }}
-    >
+    <div style={SearchBarStyles.Container}>
       <TextField
-        placeholder="Search name"
+        placeholder={placeHolder}
         variant="outlined"
         value={value}
         onChange={onChange}
         sx={{
           "& .MuiInputBase-input": {
-            height: "20px",
-            borderRadius: "20px",
-            background: "#fffffff",
-            padding: "3px 10px",
+            ...SearchBarStyles.Input,
           },
           "& .MuiInputBase-root": {
-            borderRadius: "20px",
-            border: `1px solid ${theme.primaryMain}`,
-          },
-          "& .MuiSvgIcon-root": {
-            color: "red",
+            ...SearchBarStyles.Root,
           },
           width: "75%",
         }}

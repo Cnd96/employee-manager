@@ -64,7 +64,11 @@ export default function EmployeeListPage() {
         margin={"20px 0"}
         alignItems={"center"}
       >
-        <SearchBar value={searchValue} onChange={handleSearchChange} />
+        <SearchBar
+          value={searchValue}
+          onChange={handleSearchChange}
+          placeHolder="Search name"
+        />
         <TextButton
           text="Add Employee"
           background={theme.primaryMain}
