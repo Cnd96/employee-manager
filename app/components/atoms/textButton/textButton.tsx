@@ -12,6 +12,7 @@ const TextButton = ({ text, background, onClick }: ButtonProps) => {
   const smallScreen = useMediaQuery("(max-width:500px)");
   return (
     <Button
+      data-testid="TextButtonId"
       variant="contained"
       color="secondary"
       style={{

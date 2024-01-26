@@ -10,7 +10,7 @@ describe("Icon Button test", () => {
     const buttonStyle = window.getComputedStyle(buttonElement);
     expect(buttonStyle.backgroundColor).toBe("red");
   });
-  it("Renders button color correctly", () => {
+  it("Renders button color correctly part 2", () => {
     render(<IconButton background="red" src="" />);
     const buttonElement = screen.getByTestId("IconButtonId");
     const buttonStyle = window.getComputedStyle(buttonElement);
